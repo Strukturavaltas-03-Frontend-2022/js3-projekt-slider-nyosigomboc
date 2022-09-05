@@ -9,7 +9,7 @@ const captionDiv = document.querySelector('.caption');
 const statusDiv = document.querySelector('.status');
 
 const loadTime = 100;
-const changeTime = 500;
+const changeTime = 800;
 let slideTime = 3000;
 
 const updateStatus = () => {
@@ -18,7 +18,9 @@ const updateStatus = () => {
 
 const changeImage = (url, caption) => {
   oldImageImg.setAttribute('src', currentImageImg.getAttribute('src'));
-  currentImageImg.style.opacity = 0;
+  setTimeout(() => {
+    currentImageImg.style.opacity = 0;
+  }, 0);
   currentImageImg.setAttribute('src', url);
   currentImageImg.setAttribute('alt', caption);
   captionDiv.innerHTML = caption;
@@ -48,7 +50,6 @@ const loadNth = (n) => {
   changeImageObj(getNth(n));
 };
 
-loadNth(0);
 document.querySelector('.go_left').addEventListener('click', loadPrev);
 document.querySelector('.go_right').addEventListener('click', loadNext);
 
@@ -81,11 +82,13 @@ const autoSlide = () => {
 
 const setSpeed = (t) => {
   slideTime = t;
+  loadPrev();
   autoSlide();
 };
 
 createCircles(getNumberOfImages());
 addListeners();
+// loadNth(0);
 setSpeed(5000);
 
 // changeHeight('100px');
