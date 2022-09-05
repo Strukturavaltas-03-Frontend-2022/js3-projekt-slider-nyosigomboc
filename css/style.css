@@ -10,14 +10,15 @@ body {
 }
 
 .gallery {
-  display: flex;
-  margin-left: 10vw;
-  margin-right: 10vw;
+  display: block;
+  margin: 2vh 10vw;
   height: 70vh;
   width: 80vw;
   justify-content: center;
   align-items: center;
   border-radius: 20px;
+  background-color: transparent;
+  z-index: 0;
 }
 
 .holder {
@@ -25,6 +26,12 @@ body {
   overflow: hidden;
   position: relative;
   background-color: #050505;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.images {
   width: 100%;
 }
 
@@ -35,18 +42,47 @@ body {
   position: absolute;
   z-index: 3;
   cursor: pointer;
+  opacity: 0.7;
+  top: 50%;
+  transform: translateY(-50%);
+  color: white;
 }
 
 .go_left {
   /*float: left;*/
-  background-color: #ff000055;
+  background-color: #22222255;
   left: 0;
 }
 
 .go_right {
   /*float: right;*/
-  background-color: #0000ff55;
+  background-color: #22222255;
   right: 0;
+}
+
+#img, #old_img {
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+img {
+  transition: opacity 0.5s;
+}
+
+#old_img {
+  z-index: 1;
+  opacity: 1;
+}
+
+#img {
+  z-index: 2;
+  opacity: 1;
 }
 
 .caption {
@@ -54,5 +90,35 @@ body {
   position: absolute;
   bottom: 0px;
   z-index: 3;
-  color: greenyellow;
+  color: #dedede99;
+  background-color: #222222dd;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 3em;
+}
+
+.dot {
+  height: 25px;
+  width: 25px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  margin: 10px 5px;
+  cursor: pointer;
+}
+
+.chooser {
+  align-items: center;
+  text-align: center;
+}
+
+.status {
+  z-index: 5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 3em;
+  color: #eeeeeedd;
+  background-color: #23232377;
+  padding: 2vh 2vw;
 }
