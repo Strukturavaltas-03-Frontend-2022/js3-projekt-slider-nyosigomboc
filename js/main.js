@@ -10,6 +10,7 @@ const statusDiv = document.querySelector('.status');
 
 const loadTime = 100;
 const changeTime = 500;
+let slideTime = 3000;
 
 const updateStatus = () => {
   statusDiv.innerHTML = getStatus();
@@ -71,7 +72,20 @@ const changeHeight = (height) => {
   document.querySelector('.gallery').style.height = height;
 };
 
+const autoSlide = () => {
+  loadNext();
+  if (slideTime !== null) {
+    setTimeout(autoSlide, slideTime);
+  }
+};
+
+const setSpeed = (t) => {
+  slideTime = t;
+  autoSlide();
+};
+
 createCircles(getNumberOfImages());
 addListeners();
+setSpeed(5000);
 
 // changeHeight('100px');
